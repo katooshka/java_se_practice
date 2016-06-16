@@ -1,4 +1,4 @@
-package collections;
+package collections.guava;
 
 import com.google.common.collect.HashMultiset;
 import com.google.common.collect.Multiset;

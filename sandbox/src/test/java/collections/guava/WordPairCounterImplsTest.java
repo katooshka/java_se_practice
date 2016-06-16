@@ -1,4 +1,4 @@
-package collections;
+package collections.guava;
 
 import org.junit.Test;
 

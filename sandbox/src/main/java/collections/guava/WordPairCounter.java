@@ -1,4 +1,4 @@
-package collections;
+package collections.guava;
 
 public interface WordPairCounter {
     void addWordPair(String word1, String word2);

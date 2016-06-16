@@ -1,4 +1,4 @@
-package collections;
+package collections.guava;
 
 import java.util.HashMap;
 import java.util.Map;
