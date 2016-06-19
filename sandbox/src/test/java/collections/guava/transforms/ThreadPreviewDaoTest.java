@@ -33,16 +33,21 @@ public class ThreadPreviewDaoTest {
             preview(post(1, 1), post(4, 1), post(5, 1), post(9, 1)),
             preview(post(7, 3)));
 
+    private final PostsDao postsDao = mock(PostsDao.class);
+
     @Test
-    public void testThreadPreview(){
-        test(posts, expectedThreadPreview);
+    public void testThreadPreviewWithGuavaTransforms(){
+        test(posts, expectedThreadPreview, new ThreadPreviewDaoWithGuavaTransforms(postsDao));
     }
 
-    private void test(ImmutableList<Post> posts, List<ThreadPreview> expectedThreadPreviews) {
-        PostsDao postsDao = mock(PostsDao.class);
+    @Test
+    public void testThreadPreviewWithGuavaTransformsAndLambdas(){
+        test(posts, expectedThreadPreview, new ThreadPreviewDaoWithGuavaTransformsAndLambdas(postsDao));
+    }
+
+    private void test(ImmutableList<Post> posts, List<ThreadPreview> expectedThreadPreviews, ThreadPreviewDao threadPreviewDao) {
         int boardId = 1;
         when(postsDao.selectPostsByBoard(boardId)).thenReturn(posts);
-        ThreadPreviewDaoWithGuavaTransforms threadPreviewDao = new ThreadPreviewDaoWithGuavaTransforms(postsDao);
         List<ThreadPreview> threadPreview = threadPreviewDao.getThreadsPreviews(boardId);
         assertEquals(threadPreview, expectedThreadPreviews);
     }

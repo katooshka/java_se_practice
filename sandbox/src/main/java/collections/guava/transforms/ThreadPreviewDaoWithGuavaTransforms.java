@@ -7,7 +7,7 @@ import com.google.common.collect.Ordering;
 
 import java.util.List;
 
-public class ThreadPreviewDaoWithGuavaTransforms {
+public class ThreadPreviewDaoWithGuavaTransforms implements ThreadPreviewDao{
     private static final Ordering<List<Post>> LAST_POST_ID_ORDER = new Ordering<List<Post>>() {
         @Override
         public int compare(List<Post> thread1, List<Post> thread2) {
