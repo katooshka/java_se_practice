@@ -1,1 +1,1 @@
-In this repository I study Java SE features.
+In this repository I study Java SE features using JUnit tests.
